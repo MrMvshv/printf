@@ -5,13 +5,13 @@
 
 typedef struct form{
 	char *type;
-	void (*func)(va_list *a);
+	int (*func)(va_list *a);
 } formspec;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
 
-void prString(va_list *a);
-void prChar(va_list *a);
-void prPercent(va_list *a);
+int prString(va_list *a);
+int prChar(va_list *a);
+int prPercent(va_list *a);
 #endif

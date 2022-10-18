@@ -8,6 +8,7 @@
  */
 int _printf(const char *format, ...)
 {
+	int count;
 	int i = 0, j = 0;
 	va_list vars;
 
@@ -25,6 +26,7 @@ int _printf(const char *format, ...)
 		if (format[i] != '%')
 		{
 			_putchar(format[i]);
+			count++;
 		}
 		else
 		{
@@ -32,10 +34,16 @@ int _printf(const char *format, ...)
 			while (*fspec[j].type != '\0')
 			{
 				if (*fspec[j].type == format[i])
+				{
 					fspec[j].func(&vars);
-				else
-					_putchar(format[i]);
+					count++;
+				}
 
+				else
+				{
+					_putchar(format[i]);
+					count++;
+				}
 				j++;
 			}
 		}
