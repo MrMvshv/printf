@@ -1,86 +1,66 @@
 #include "main.h"
-/**
- * prChar - prints  a char
- * @a: list of arguments
- *
- * Return: Number of chars printed
+/**prChar - prints  a char
+  @vars: list of argument
+  @buff: buffer
+  @count: index of the buffer pointer
+
+Return: buffer index
 */
-int prChar(va_list *a)
+int prChar(char *buff_dest, va_list vars, int buff_count)
 {
-	char c = (char)va_arg(*a, int);
+        char c = va_arg(vars, int);
 
-	_putchar(c);
-	return (1);
+        buff_dest[buff_count] = c;
+
+        return (++buff_count);
 }
 
-
 /**
- * prDouble - prints  a float (double)
- * @a: list of arguments
- *
- * Return: Number of chars printed
+  prPercent - prints percentage
+  @vars: list of arguments
+  @buff: buffer
+  @count:index of buffer pointer
+Return: buffer index
 */
-int prDouble(va_list *a)
+int prPercent(char *buff_dest, va_list vars, int buff_count)
 {
-	double c = va_arg(*a, double);
+        char c = va_arg(vars, int);
 
-	_putchar(c);
-	return (1);
+        c = '%';
+
+        buff_dest[buff_count] = c;
+
+        return(++buff_count);
 }
 
 /**
- * prInt - prints an int
- * @a: list of arguments
- *
- * Return: number of digits printed
- */
-int prInt(va_list *a)
-{
-	int n, count = 0;
-
-	n = va_arg(*a, int);
-	prIntB(n);
-	while (n > 0)
-	{
-		count++;
-		n = n / 10;
-	}
-	return (count);
-}
-/**
- * prPercent - prints percentage
- * @a: list of arguments
- *
- * Return: Number of chars printed
+  prString - prints a string
+  @a: list of arguments
+Return: Number of chars printed
 */
-int prPercent(va_list *a)
+int prString(char *buff_dest, va_list vars, int buff_count)
 {
-	char c = (char)va_arg(*a, int);
+        char *str;
+        int i = 0;
 
-	c = '%';
-	_putchar(c);
 
-	return (1);
+        str = va_arg(vars, char *);
+if (str == NULL)
+                str = "(null)";
+
+        if (str[0] == '\0')
+        {
+                buff_dest[buff_count] = '\0';
+                buff_count++;
+        }
+
+        while (str[i] != '\0')
+        {
+                buff_dest[buff_count] = str[i];
+                i++;
+                buff_count++;
+        }
+
+        return (buff_count);
 }
 
-/**
- * prString - prints a string
- * @a: list of arguments
- *
- * Return: Number of chars printed
-*/
-int prString(va_list *a)
-{
-	char *str;
-	int i = 0;
-
-
-	str = va_arg(*a, char *);
-
-	while (str[i] != '\0')
-	{
-		_putchar(*str);
-		i++;
-	}
-	return (i);
-}
