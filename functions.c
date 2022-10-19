@@ -1,65 +1,86 @@
 #include "main.h"
-/**prChar - prints  a char
-  @vars: list of argument
-  @buff_dest: buffer
-  @count: index of the buffer pointer
-
-Return: buffer index
+/**
+ * prChar - prints  a char
+ * @a: list of arguments
+ *
+ * Return: Number of chars printed
 */
-int prChar(char *buff_dest, va_list vars, int buff_count)
+int prChar(va_list *a)
 {
-	char c = va_arg(vars, int);
+	char c = (char)va_arg(*a, int);
 
-	buff_dest[buff_count] = c;
+	_putchar(c);
+	return (1);
+}
 
-	return (++buff_count);
+
+/**
+ * prDouble - prints  a float (double)
+ * @a: list of arguments
+ *
+ * Return: Number of chars printed
+*/
+int prDouble(va_list *a)
+{
+	double c = va_arg(*a, double);
+
+	_putchar(c);
+	return (1);
 }
 
 /**
-  prPercent - prints percentage
-  @vars: list of arguments
-  @buff_dest: buffer
-  @count:index of buffer pointer
-Return: buffer index
-*/
-int prPercent(char *buff_dest, va_list vars, int buff_count)
+ * prInt - prints an int
+ * @a: list of arguments
+ *
+ * Return: number of digits printed
+ */
+int prInt(va_list *a)
 {
-	char c = va_arg(vars, int);
+	int n, count = 0;
+
+	n = va_arg(*a, int);
+	prIntB(n);
+	while (n > 0)
+	{
+		count++;
+		n = n / 10;
+	}
+	return (count);
+}
+/**
+ * prPercent - prints percentage
+ * @a: list of arguments
+ *
+ * Return: Number of chars printed
+*/
+int prPercent(va_list *a)
+{
+	char c = (char)va_arg(*a, int);
 
 	c = '%';
+	_putchar(c);
 
-	buff_dest[buff_count] = c;
-
-	return(++buff_count);
+	return (1);
 }
 
 /**
-  prString - prints a string
-  @vars: list of arguments
-Return: Number of chars printed
+ * prString - prints a string
+ * @a: list of arguments
+ *
+ * Return: Number of chars printed
 */
-int prString(char *buff_dest, va_list vars, int buff_count)
+int prString(va_list *a)
 {
 	char *str;
 	int i = 0;
 
 
-	str = va_arg(vars, char *);
-if (str == NULL)
-		str = "(null)";
-
-	if (str[0] == '\0')
-	{
-		buff_dest[buff_count] = '\0';
-		buff_count++;
-	}
+	str = va_arg(*a, char *);
 
 	while (str[i] != '\0')
 	{
-		buff_dest[buff_count] = str[i];
+		_putchar(*str);
 		i++;
-		buff_count++;
 	}
-
-	return (buff_count);
+	return (i);
 }

@@ -2,18 +2,27 @@
 #define MAIN_H
 #include <stdarg.h>
 #include <stddef.h>
-#include <unistd.h>
-typedef struct form{
-	char type;
-	int (*func)(char *,va_list, int);
+#include <stdlib.h>
+/**
+ * struct form - type and corresponding function
+ * @type: format specifier
+ * @func: corresponding function
+ */
+typedef struct form
+{
+	char *type;
+	int (*func)(va_list *a);
 } formspec;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-int print_buff(char *buff, unsigned int nbuff);
 
-int prChar(char *buff_dest, va_list vars, int buff_count);
-int prString(char *buff_dest, va_list vars, int buff_count);
-int prInt(char *buff_dest, va_list vars, int buff_count);
-int prPercent(char *buff_dest, va_list vars, int buff_count);
+
+void prIntB(int n);
+
+int prString(va_list *a);
+int prChar(va_list *a);
+int prPercent(va_list *a);
+int prInt(va_list *a);
+int prDouble(va_list *a);
 #endif
