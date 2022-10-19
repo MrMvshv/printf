@@ -8,46 +8,38 @@
  */
 int _printf(const char *format, ...)
 {
-	int count;
+	int count = 0;
 	int i = 0, j = 0;
 	va_list vars;
 
-	formspec fspec[] = {
-		{"s", prString},
-		{"c", prChar},
-		{"%", prPercent},
-		{'\0', NULL}
-	};
+	formspec fspec[] = {	{"s", prString}, {"c", prChar}, {"%", prPercent},
+				{"d", prDouble}, {"i", prInt}, {'\0', NULL}};
 
 	va_start(vars, format);
 
 	while (format && format[i])
 	{
-		if (format[i] != '%')
-		{
-			_putchar(format[i]);
-			count++;
-		}
-		else
+		if (format[i] == '%')
 		{
 			i++;
-			while (*fspec[j].type != '\0')
+			while (fspec[j].type)
 			{
 				if (*fspec[j].type == format[i])
 				{
 					fspec[j].func(&vars);
 					count++;
-				}
-
-				else
-				{
-					_putchar(format[i]);
-					count++;
+					j = 0;
+					break;
 				}
 				j++;
 			}
 		}
+		else
+		{
+			_putchar(format[i]);
+			count++;
+		}
 		i++;
 	}
-	return (0);
+	return (count);
 }
