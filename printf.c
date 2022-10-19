@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	va_list vars;
 
 	formspec fspec[] = {	{"s", prString}, {"c", prChar}, {"%", prPercent},
-				{"d", prDouble}, {"i", prInt}, {'\0', NULL}};
+				{"d", prInt}, {"i", prInt}, {'\0', NULL}};
 
 	va_start(vars, format);
 
