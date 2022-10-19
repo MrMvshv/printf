@@ -1,49 +1,65 @@
 #include "main.h"
 /**prChar - prints  a char
-  @a: list of arguments
+  @vars: list of argument
+  @buff_dest: buffer
+  @count: index of the buffer pointer
 
-Return: Number of chars printed
+Return: buffer index
 */
-int prChar(va_list *a)
+int prChar(char *buff_dest, va_list vars, int buff_count)
 {
-	char *c = va_arg(*a, int);
+	char c = va_arg(vars, int);
 
-	_putchar(c);
+	buff_dest[buff_count] = c;
 
-	return(1);
+	return (++buff_count);
 }
 
 /**
   prPercent - prints percentage
-  @a: list of arguments
-Return: Number of chars printed
+  @vars: list of arguments
+  @buff_dest: buffer
+  @count:index of buffer pointer
+Return: buffer index
 */
-int prPercent(va_list *a)
+int prPercent(char *buff_dest, va_list vars, int buff_count)
 {
-	char c = va_arg(*a, int);
+	char c = va_arg(vars, int);
 
-	_putchar(c);
+	c = '%';
 
-	return(1);
+	buff_dest[buff_count] = c;
+
+	return(++buff_count);
 }
 
 /**
   prString - prints a string
-  @a: list of arguments
+  @vars: list of arguments
 Return: Number of chars printed
 */
-int prString(va_list *a)
+int prString(char *buff_dest, va_list vars, int buff_count)
 {
 	char *str;
 	int i = 0;
 
 
-	str = va_arg(*a, char *);
+	str = va_arg(vars, char *);
+if (str == NULL)
+		str = "(null)";
 
-	while(str)
+	if (str[0] == '\0')
 	{
-		_putchar(*str);
-		i++;
+		buff_dest[buff_count] = '\0';
+		buff_count++;
 	}
-	return (i);
+
+	while (str[i] != '\0')
+	{
+		buff_dest[buff_count] = str[i];
+		i++;
+		buff_count++;
+	}
+
+	return (buff_count);
 }
