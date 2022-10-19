@@ -76,6 +76,7 @@ int prInt(char *buff_dest, va_list vars, int buff_count)
 	int on;
 
 	number = va_arg(vars, int);
+	on = number;
 
 	if (number < 0)
 	{
@@ -85,7 +86,6 @@ int prInt(char *buff_dest, va_list vars, int buff_count)
 	}
 	while (on > 0)
 	{
-		on = number;
 		while ((number / 10) > 0)
 		{
 			number /= 10;

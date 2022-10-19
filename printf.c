@@ -16,6 +16,8 @@ int _printf(const char *format, ...)
 		{'%', prPercent}, {'d', prInt}, {'i', prInt}, {'\0', NULL}
 	};
 	va_start(vars, format);
+	if (!format)
+		return (-1);
 	while (format && format[i] != '\0')
 	{
 		if (format[i] == '%')
