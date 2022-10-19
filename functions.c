@@ -83,10 +83,10 @@ int prInt(char *buff_dest, va_list vars, int buff_count)
 		number *= -1;
 		buff_count++;
 	}
-	while(on > 0)
+	while (on > 0)
 	{
 		on = number;
-		while((number / 10) > 0)
+		while ((number / 10) > 0)
 		{
 			number /= 10;
 		}
