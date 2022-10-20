@@ -9,12 +9,14 @@
 int _printf(const char *format, ...)
 {
 	int i = 0, j = 0, buff_count = 0, prev_buff_count = 0;
-	char buffer[2000];
+	char buffer[1024];
 	va_list vars;
 
-	formspec fspec[] = {{'s', prString}, {'c', prChar},
+	formspec fspec[] = {{'s', prString}, {'c', prChar}, {'X', prX},
+		{'u', prUint}, {'o', prOct}, {'x', prHex},
 		{'%', prPercent}, {'d', prInt}, {'i', prInt}, {'\0', NULL}
 	};
+
 	va_start(vars, format);
 	if (!format)
 		return (-1);
