@@ -76,6 +76,13 @@ int prInt(char *buff_dest, va_list vars, int buff_count)
 	int divisor;
 
 	n = va_arg(vars, int);
+	if (n < 0)
+	{
+		buff_dest[buff_count] = '-';
+		buff_count++;
+		n *= -1;
+	}
+
 	for (; divisor > 1;)
 	{
 		divisor = 1;
