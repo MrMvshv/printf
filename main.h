@@ -3,6 +3,7 @@
 #include <stdarg.h>
 #include <stddef.h>
 #include <unistd.h>
+#include <stdlib.h>
 /**
  * struct form - parameters
  * @type: format specifier
@@ -35,10 +36,21 @@ int prChar(char *buff_dest, va_list vars, int buff_count);
 int prString(char *buff_dest, va_list vars, int buff_count);
 int prPercent(char *buff_dest, va_list vars, int buff_count);
 int prInt(char *buff_dest, va_list vars, int buff_count);
+
 int prUint(char *buff_dest, va_list arg, int buff_count);
 int prOct(char *buff_dest, va_list arg, int buff_count);
 int prHex(char *buff_dest, va_list vars, int buff_count);
 int prX(char *buff_dest, va_list vars, int buff_count);
 int get_flag(char s, flags_t *f);
 
+
+int prBinary(char *buff_dest, va_list vars, int buff_count);
+int prReverse(char *buff_dest, va_list vars, int buff_count);
+int prRot(char *buff_dest, va_list vars, int buff_count);
+
+/* extra */
+
+char *reverser(char *s);
+unsigned int b_len(unsigned int num, int base);
+char *_memcpy(char *dest, char *src, unsigned int n);
 #endif
