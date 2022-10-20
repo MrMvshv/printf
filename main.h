@@ -21,4 +21,6 @@ int prChar(char *buff_dest, va_list vars, int buff_count);
 int prString(char *buff_dest, va_list vars, int buff_count);
 int prPercent(char *buff_dest, va_list vars, int buff_count);
 int prInt(char *buff_dest, va_list vars, int buff_count);
+
+void prIntB(int n, char *buff_dest, int buff_count);
 #endif

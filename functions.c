@@ -1,4 +1,6 @@
 #include "main.h"
+
+int powA(int x, int y);
 /**
  * prChar - prints  a char
  * @vars: list of argument
@@ -72,42 +74,21 @@ int prString(char *buff_dest, va_list vars, int buff_count)
  */
 int prInt(char *buff_dest, va_list vars, int buff_count)
 {
-	int number;
-	int on;
+	int on, n, count = 0;
+	int divisor;
 
-	number = va_arg(vars, int);
-	on = number;
+	n = va_arg(vars, int);
+	on = n;
+	for (; divisor > 1;)
+	{
+		divisor = 1;
+		for (; n / divisor > 9; )
+			divisor *= 10;
 
-	if (number < 0)
-	{
-		buff_dest[buff_count] = '-';
-		number *= -1;
+		buff_dest[buff_count] = ((n / divisor) + '0');
 		buff_count++;
+		n = n % divisor;
 	}
-	while (on > 0)
-	{
-		while ((number / 10) > 0)
-		{
-			number /= 10;
-		}
-		buff_dest[buff_count] = (char)(48 + number);
-		buff_count++;
-		on /= 10;
-		number = on;
-	}
+
 	return (buff_count);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

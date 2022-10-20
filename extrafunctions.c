@@ -1,22 +1,17 @@
 #include "main.h"
 /**
- * prIntB - recursive int printer
- * @n: int to print
- * Return: void
+ * powA - returns power
+ * @x: x
+ * @y: to power y
+ * Return: power
  */
-void prIntB(int n)
+int powA(int x, int y)
 {
-	int m;
+	int result, i = 0;
 
-	m = n;
-	if (n < 0)
+	while (i < y)
 	{
-		_putchar('-');
-		m = -n;
+		result *= x;
+		i++;
 	}
-	if (m / 10 != 0)
-	{
-		prIntB(m / 10);
-	}
-	_putchar((m % 10) + '0');
 }
