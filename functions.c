@@ -1,6 +1,4 @@
 #include "main.h"
-
-int powA(int x, int y);
 /**
  * prChar - prints  a char
  * @vars: list of argument
