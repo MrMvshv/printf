@@ -72,11 +72,10 @@ int prString(char *buff_dest, va_list vars, int buff_count)
  */
 int prInt(char *buff_dest, va_list vars, int buff_count)
 {
-	int on, n, count = 0;
+	int n;
 	int divisor;
 
 	n = va_arg(vars, int);
-	on = n;
 	for (; divisor > 1;)
 	{
 		divisor = 1;
