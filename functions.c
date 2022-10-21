@@ -77,7 +77,7 @@ int prInt(char *buff_dest, va_list vars, int buff_count)
 
 	n = va_arg(vars, int);
 	divisor = 1;
-	
+
 	if (n < 0)
 	{
 		buff_dest[buff_count] = '0';
@@ -86,7 +86,7 @@ int prInt(char *buff_dest, va_list vars, int buff_count)
 	}
 
 	for (; n / divisor > 9; )
-			divisor *= 10;
+		divisor *= 10;
 	for (; divisor != 0; )
 	{
 		buff_dest[buff_count] = ((n / divisor) + '0');

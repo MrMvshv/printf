@@ -23,12 +23,12 @@ int prBinary(char *buff_dest, va_list vars, int buff_count)
 	}
 	if (num < 1)
 		return (-1);
-	
+
 	len = b_len(num, 2);
 	str = malloc(sizeof(char) * len + 1);
 	if (str == NULL)
 		return (-1);
-	
+
 	for (i = 0; num > 0; i++)
 	{
 		if (num % 2 == 0)
@@ -41,7 +41,7 @@ int prBinary(char *buff_dest, va_list vars, int buff_count)
 	rev_str = reverser(str);
 	if (rev_str == NULL)
 		return (-1);
-	
+
 	for (i = 0; rev_str[i] != '\0'; i++)
 	{/* add to buffer */
 		buff_dest[buff_count] = (rev_str[i]);
@@ -68,11 +68,11 @@ int prReverse(char *buff_dest, va_list vars, int buff_count)
 	str = va_arg(vars, char *);
 	if (str == NULL)
 		return (-1);
-	
+
 	ptr = reverser(str);
 	if (ptr == NULL)
 		return (-1);
-	
+
 	for (len = 0; ptr[len] != '\0'; len++)
 	{
 		buff_dest[buff_count] = ptr[len];
@@ -102,7 +102,7 @@ int prRot(char *buff_dest, va_list vars, int buff_count)
 	str = va_arg(vars, char *);
 	if (str == NULL)
 		return (-1);
-	
+
 	for (i = 0; str[i] != '\0'; i++)
 	{
 		for (x = 0; x <= 52; x++)

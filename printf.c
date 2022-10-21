@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	va_list vars;
 
 	formspec fspec[] = {{'s', prString}, {'c', prChar}, {'X', prX},
-		{'u', prUint}, {'o', prOct}, {'x', prHex}, {'b', prBinary}, 
+		{'u', prUint}, {'o', prOct}, {'x', prHex}, {'b', prBinary},
 		{'%', prPercent}, {'d', prInt}, {'i', prInt},
 		{'r', prReverse}, {'R', prRot}, {'\0', NULL}
 	};
@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 				}
 			}
 			if (buff_count == prev_buff_count && format[i])
-				i--, buffer[buff_count] = format[i], buff_count++; 
+				i--, buffer[buff_count] = format[i], buff_count++;
 		}
 		else
 			buffer[buff_count] = format[i], buff_count++;
