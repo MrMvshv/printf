@@ -14,8 +14,8 @@ int _printf(const char *format, ...)
 
 	formspec fspec[] = {{'s', prString}, {'c', prChar}, {'X', prX},
 		{'u', prUint}, {'o', prOct}, {'x', prHex}, {'b', prBinary},
-		{'%', prPercent}, {'d', prInt}, {'i', prInt},
-		{'r', prReverse}, {'R', prRot}, {'\0', NULL}
+		{'%', prPercent}, {'d', prInt}, {'i', prInt}, {'S', prS},
+		{'r', prReverse}, {'R', prRot}, {'p', prP}, {'\0', NULL}
 	};
 	va_start(vars, format);
 	if (!format)

@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * reverser - reverse a string
@@ -66,3 +67,37 @@ char *_memcpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
+/**
+ * tHex - adds (ASCII) of string char to buffer
+ * @buff_dest: buffer
+ * @str: string character
+ * @buff_count: buffer index
+ *
+ * Return: buffer index
+ */
+int tHex(char *buff_dest, char str, int buff_count)
+{
+	int i = 0, j, temp, t;
+	char hx[2], c;
+
+	c = str;
+	t = (int)c;
+	while (i < 2)
+	{
+		temp = t % 16;
+		if (temp < 10)
+			temp += 48;
+		else
+			temp += 55;
+
+		hx[i] = temp;
+		i++;
+		t /= 16;
+	}
+	for (j = 1; j >= 0; j--)
+	{
+		buff_dest[buff_count] = hx[j];
+		buff_count++;
+	}
+	return (buff_count);
+}

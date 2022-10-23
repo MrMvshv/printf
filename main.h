@@ -47,7 +47,9 @@ int get_flag(char s, flags_t *f);
 int prBinary(char *buff_dest, va_list vars, int buff_count);
 int prReverse(char *buff_dest, va_list vars, int buff_count);
 int prRot(char *buff_dest, va_list vars, int buff_count);
-
+int prS(char *buff_dest, va_list vars, int buff_count);
+int tHex(char *buff_dest, char str, int buff_count);
+int prP(char *buff_dest, va_list vars, int buff_count);
 /* extra */
 
 char *reverser(char *s);

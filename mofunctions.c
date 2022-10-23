@@ -122,3 +122,73 @@ int prRot(char *buff_dest, va_list vars, int buff_count)
 	}
 	return (buff_count);
 }
+
+
+/**
+ * prS - adds (ASCII) string to buffer
+ * @buff_dest: buffer
+ * @buff_count: index of buffer pointer
+ * @vars: list of main arguments
+ *
+ * Return: buffer index
+ */
+int prS(char *buff_dest, va_list vars, int buff_count)
+{
+	char *str;
+	char hx;
+	int i = 0;
+
+	str = va_arg(vars, char *);
+	if (str == NULL)
+		str = "(null)";
+	if (str[0] == '\0')
+	{
+		buff_dest[buff_count] = '\0';
+		buff_count++;
+		/*return (buff_count);*/
+	}
+
+	while (str[i] != '\0')
+	{
+		if ((str[i] > 0 && str[i] < 32) || str[i] >= 127)
+		{
+			hx = str[i];
+			buff_dest[buff_count] = 92;
+			buff_dest[buff_count + 1] = 'x';
+			buff_count += 2;
+			buff_count = tHex(buff_dest, hx, buff_count);
+			i++;
+			continue;
+		}
+		else
+		{
+			buff_dest[buff_count] = str[i];
+			i++;
+			buff_count++;
+		}
+	}
+	return (buff_count);
+}
+
+
+/**
+ * prP - adds address string to buffer
+ * @buff_dest: buffer
+ * @buff_count: index of buffer pointer
+ * @vars: list of main arguments
+ *
+ * Return: buffer index
+ */
+int prP(char *buff_dest, va_list vars, int buff_count)
+{
+	int i = 0;
+	char *str = va_arg(vars, char *);
+
+	while (str[i] != '\0')
+	{
+		buff_dest[buff_count] = str[i];
+		i++;
+		buff_count++;
+	}
+	return (buff_count);
+}

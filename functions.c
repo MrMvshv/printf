@@ -80,7 +80,7 @@ int prInt(char *buff_dest, va_list vars, int buff_count)
 
 	if (n < 0)
 	{
-		buff_dest[buff_count] = '0';
+		buff_dest[buff_count] = '-';
 		buff_count++;
 		n *= -1;
 	}
