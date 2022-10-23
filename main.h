@@ -40,5 +40,7 @@ int prOct(char *buff_dest, va_list arg, int buff_count);
 int prHex(char *buff_dest, va_list vars, int buff_count);
 int prX(char *buff_dest, va_list vars, int buff_count);
 int get_flag(char s, flags_t *f);
+int prinlint(va_list vars, char *buff_dest, unsigned int buff_count);
+
 
 #endif
